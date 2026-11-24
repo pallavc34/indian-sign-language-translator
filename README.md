@@ -1,5 +1,8 @@
 # Indian Sign Language Translator
 
+[![Buy Me a Coffee](https://img.shields.io/badge/Buy%20Me%20a%20Coffee-FFDD00?style=flat&logo=buymeacoffee&logoColor=000)](https://buymeacoffee.com/pallavc34)
+[![Android build](https://github.com/pallavc34/indian-sign-language-translator/actions/workflows/android-build.yml/badge.svg?branch=main&event=push)](https://github.com/pallavc34/indian-sign-language-translator/actions/workflows/android-build.yml)
+
 A Flutter app for Android and iOS that turns spoken or typed words into Indian Sign Language (ISL) fingerspelling. Saniya, a 3D avatar, signs each letter. The image keyboard lets users compose text from the ISL alphabet and play it aloud.
 
 [Get it on Google Play](https://play.google.com/store/apps/details?id=com.andrdoc.signlanguage) · [Watch Saniya fingerspell HELLO](docs/phaseplan/hello-simulator.mp4)
@@ -40,7 +43,7 @@ flutter doctor
 flutter pub get
 ```
 
-The Android build uses the Google Services Gradle plugin. Register an Android app with package ID `com.andrdoc.signlanguage` in your own Firebase project and put its `google-services.json` in `android/app/`. Debug builds use Android’s debug signing. Keep your Firebase configuration and release-signing files outside contributions.
+Android debug builds use Android’s debug signing. To enable Firebase and Crashlytics, register an Android app with package ID `com.andrdoc.signlanguage` in your own Firebase project and put its `google-services.json` in `android/app/`. Keep your Firebase configuration and release-signing files outside contributions.
 
 For iOS, open `ios/Runner.xcworkspace` and select your own signing team and bundle identifier if you run on a physical device. To enable Firebase there, register that bundle ID in your Firebase project and add its `GoogleService-Info.plist` to the Runner target. The app can start with crash reporting unavailable on iOS.
 
@@ -52,6 +55,8 @@ flutter run -d DEVICE_ID
 Replace `DEVICE_ID` with the ID from `flutter devices`. Allow microphone and speech recognition access when testing voice input. If the simulator has no speech recognition service, try typed input or use a physical device for the microphone check.
 
 ### Checks
+
+The Android build badge shows the latest build on `main`. GitHub Actions runs static analysis, widget tests, and a debug APK build on pushes to `main` and on pull requests.
 
 ```sh
 flutter analyze
