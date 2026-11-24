@@ -2,37 +2,40 @@
 
 [![Buy Me a Coffee](https://img.shields.io/badge/Buy%20Me%20a%20Coffee-FFDD00?style=flat&logo=buymeacoffee&logoColor=000)](https://buymeacoffee.com/pallavc34)
 [![Android build](https://github.com/pallavc34/indian-sign-language-translator/actions/workflows/android-build.yml/badge.svg?branch=main&event=push)](https://github.com/pallavc34/indian-sign-language-translator/actions/workflows/android-build.yml)
+[![Flutter](https://img.shields.io/badge/Flutter-0367AB?logo=flutter&logoColor=white)](pubspec.yaml)
+[![Android](https://img.shields.io/badge/Android-168346?logo=android&logoColor=white)](android/)
+[![iOS](https://img.shields.io/badge/iOS-222222?logo=apple&logoColor=white)](ios/)
+[![MIT License](https://img.shields.io/github/license/pallavc34/indian-sign-language-translator)](LICENSE)
 
-A Flutter app for Android and iOS that turns spoken or typed words into Indian Sign Language (ISL) fingerspelling. Saniya, a 3D avatar, signs each letter. The image keyboard lets users compose text from the ISL alphabet and play it aloud.
+Indian Sign Language Translator is an open-source Flutter app for Android and iOS. Speak or type an English word and Saniya, a 3D avatar, fingerspells it in Indian Sign Language. The alphabet keyboard also lets you compose a message from handshape images and hear it using text-to-speech.
 
 [Get it on Google Play](https://play.google.com/store/apps/details?id=com.andrdoc.signlanguage) · [Watch Saniya fingerspell HELLO](docs/phaseplan/hello-simulator.mp4)
 
 The features below describe the source in this repository. Google Play may offer an earlier version.
 
-## Features
+## Speech and text to Indian Sign Language
 
-| Mode | What you can do |
-| --- | --- |
-| **Speech to Signs** | Tap the microphone and speak, enter text manually, or select a quick phrase. Saniya fingerspells each word in sequence, then returns to her welcome pose. |
-| **Signs to Speech** | Tap A–Z handshape images and Space to build a message. Use Backspace or Clear to edit it, and tap **Speak** to hear it through the device’s text-to-speech engine. Long-press a handshape to enlarge it. |
+In **Speech to Signs**, tap the microphone, enter text, or choose a quick phrase. Saniya shows each A–Z handshape in sequence, then returns to her welcome pose. For example, “hello” becomes **H–E–L–L–O**. The app covers Indian Sign Language fingerspelling for the English alphabet.
 
-Use the switch at the top of the app to change modes. The current release of the avatar focuses on **A–Z fingerspelling**. The same English word is spelled letter by letter, so “hello” becomes **H–E–L–L–O**. The app’s ISL coverage is limited to this alphabet and does not include vocabulary or sentence grammar. The image keyboard uses manual selection.
+## Indian Sign Language alphabet keyboard and text-to-speech
 
-## How it works
+Use the switch at the top of the app to open **Signs to Speech**. Select A–Z handshape images and Space to build a message. Use Backspace or Clear to edit it, then tap **Speak** to hear it. Long-press a handshape to see it enlarged. This mode reads the letters you select from the keyboard.
 
-1. The microphone uses the platform speech recognizer. A final transcript, typed text, or a quick phrase enters the same playback flow. Speech recognition availability and network requirements depend on the device, language, and recognizer.
-2. Flutter groups A–Z letters into words. The bundled Three.js viewer loads Saniya’s rigged GLB and blends between letter poses fitted to the alphabet reference images. The typed-text signing path uses local avatar and pose assets.
-3. The image keyboard builds a text string and sends it to the device’s text-to-speech engine when the user taps **Speak**.
+## How the 3D avatar works
+
+The microphone uses the device’s speech recognizer. Flutter groups A–Z letters from the final transcript, typed text, or a quick phrase into words. The bundled Three.js viewer loads Saniya’s rigged glTF model (GLB) and animates transitions between poses fitted to the alphabet reference images.
+
+Typed-text fingerspelling uses local avatar and pose assets. Microphone recognition and text-to-speech availability depend on the device and its installed speech services.
 
 | Path | Contents |
 | --- | --- |
 | `lib/` | Flutter UI, speech recognition, and text-to-speech flow |
-| `images/` | ISL alphabet reference images and app graphics |
+| `images/` | Indian Sign Language alphabet reference images and app graphics |
 | `assets/saniya/` and `avatar/likeness/` | Bundled viewer, welcome image, and rigged avatar |
 | `tool/saniya/` | Pose data, pose-building tools, and Three.js playback source |
 | [`docs/phaseplan/`](docs/phaseplan/README.md) | Implementation plan, alphabet comparison, and demo |
 
-## Run locally
+## Build and run on Android or iOS
 
 Use Flutter **3.50.1 or newer** with Dart **3.14** or newer. For Android, install the Android SDK and a JDK compatible with the project's Gradle wrapper. For iOS, use macOS with Xcode and CocoaPods. Use a mobile device or simulator with WebGL 2 support for the avatar.
 
