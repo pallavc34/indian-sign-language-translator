@@ -1,0 +1,15 @@
+{
+  "name": "saniya",
+  "version": "1.0.0",
+  "scripts": {
+    "build": "esbuild viewer.js --bundle --minify --legal-comments=eof --outfile=../../assets/saniya/viewer.js"
+  },
+  "type": "commonjs",
+  "dependencies": {
+    "three": "0.180.0"
+  },
+  "devDependencies": {
+    "esbuild": "0.25.12"
+  },
+  "private": true
+}
